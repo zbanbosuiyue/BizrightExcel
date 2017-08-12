@@ -1,0 +1,20 @@
+<table class="table table-striped table-hover">
+  <thead>
+  <tr>
+    <th>TYPE</th>
+    <th>ID</th>
+    <th>NAME</th>
+    <th>URL</th>
+  </tr>
+  </thead>
+  <tbody *ngIf="files">
+    <tr *ngFor="let file of files" [routerLink]="['/file', file.id]" (click)="clickWorkBook(file)">
+      <td>File</td>
+      <td>{{file.id}}</td>
+      <td>{{file.name}}</td>
+      <td>{{file.webUrl}}</td>
+    </tr>
+  </tbody>
+</table>
+<button class="btn btn-primary" [routerLink]="['/login']">Back</button>
+

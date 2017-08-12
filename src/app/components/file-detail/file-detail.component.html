@@ -1,0 +1,9 @@
+
+<ngb-accordion *ngIf="sheets" #acc="ngbAccordion" activeIds="ngb-panel-0">
+  <ngb-panel title="Worksheet-name">
+    <ng-template ngbPanelContent>
+      <p *ngFor="let sheet of sheets" [routerLink]="['sheet', sheet.name]" (click)="clickSheet(sheet)">{{sheet.name}}</p>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>
+<button class="btn btn-primary" [routerLink]="['/file']">Go Back</button>
