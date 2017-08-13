@@ -12,8 +12,6 @@ import { FileDetailComponent } from './components/file-detail/file-detail.compon
 import {AuthMicrosoftGraphService} from "./services/auth-microsoft-graph.service";
 import { SheetDetailComponent } from './components/sheet-detail/sheet-detail.component';
 
-import { HotTableModule } from 'ng2-handsontable';
-
 
 @NgModule({
   imports: [
@@ -21,7 +19,6 @@ import { HotTableModule } from 'ng2-handsontable';
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    HotTableModule,
     NgbModule.forRoot(),
   ],
   declarations: [

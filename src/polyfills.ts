@@ -49,10 +49,15 @@ import 'core-js/es7/reflect';
 // import 'web-animations-js';  // Run `npm install --save web-animations-js`.
 
 
+/**
+ * Fix Handsontable not work with zone.js
+ */
+import 'handsontable/dist/handsontable';
 
 /***************************************************************************************************
  * Zone JS is required by Angular itself.
  */
+
 import 'zone.js/dist/zone';  // Included with Angular CLI.
 
 

@@ -1,14 +1,8 @@
 <h2>{{sheetName}}</h2>
 <button class="btn btn-primary" (click)="goBack()">Back</button>
-<div *ngIf="isReady">
-  <hotTable [data]="data" [options]="options"
-            [colHeaders]="colHeaders" (afterCopy)="onAfterCopy($event)"
-            (beforeCopy)="onBeforeCopy($event)" (afterChange)="onAfterChange($event)"
-            (afterePaste)="onAfterePaste($event)" (beforePaste)="onBeforePaste($event)"
-  >
 
-  </hotTable>
-</div>
+<div id="hot-table"></div>
+
 
 
 

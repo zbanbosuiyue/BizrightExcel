@@ -2,6 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {AuthMicrosoftGraphService} from "../../services/auth-microsoft-graph.service";
 import {AppComponent} from "../../app.component";
 import {Location} from '@angular/common';
+import Handsontable from "handsontable";
+
+
+
 
 @Component({
   selector: 'app-sheet-detail',
@@ -23,35 +27,39 @@ export class SheetDetailComponent implements OnInit {
     private appComponent: AppComponent,
     private location: Location
   ) {
-    appComponent.isLoading = true;
+    this.appComponent.isLoading = true;
     this.sheetName = authHelper.getSelectedSheetName();
     this.fileId = authHelper.getSelectedFileId();
-
-    this.authHelper.getUsedRange().then(res => {
-      console.log(res);
-      this.values = res.text;
-
-      this.data = this.values;
-
-      this.options = {
-        height: 1000,
-        width: 1200,
-        rowHeaders: true,
-        colHeaders: true,
-        stretchH: 'all',
-        columnSorting: false,
-        contextMenu: true
-      };
-      this.isReady = true;
-
-      appComponent.isLoading = false;
-    })
-
-
-
   }
 
   ngOnInit() {
+    this.authHelper.getUsedRange().then(res => {
+      this.appComponent.isLoading = false;
+      this.isReady = true;
+      this.data = res.text;
+      this.options = {
+        data: this.data,
+        colHeaders: true,
+        rowHeaders: true,
+        width: 1000,
+        height: 800,
+        minSpareCols: 1,
+        minSpareRows: 1,
+        contextMenu: true,
+        filters: true,
+      }
+
+      var container = document.getElementById('hot-table');
+
+      var hot = new Handsontable(container, this.options);
+
+      hot.addHook('beforeEdit', (event=[]) => {
+        console.log(event);
+      });
+
+    });
+
+
   }
 
   goBack(){
@@ -74,7 +82,7 @@ export class SheetDetailComponent implements OnInit {
     }
   }
 
-  onAfterePaste($event){
+  onAfterPaste($event){
     console.log($event);
   }
 
